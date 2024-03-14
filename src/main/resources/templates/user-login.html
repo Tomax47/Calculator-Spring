@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="/login" method="post">
+    <p class="loginError" style="color: red" th:if="${loginError != null}" th:text="${loginError}"></p>
+    <input name="email" type="text" placeholder="Example@mail.com">
+    <input name="password" type="password" placeholder="Brock123">
+    <button type="submit" value="Log in">Login</button>
+</form>
+<div class="sign-up-redirection">
+    <p>Don't have an account? <a href="/register">Register</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+<form role="form" method="post" th:action="@{/calculate}" th:object="${equationForm}">
+    <input type="hidden" name="userId" th:value="${userId}">
+    <label for="equation">Equation</label>
+    <input type="text"
+           name="rawEquation"
+           placeholder="Write the equation here"
+           id="equation"
+           th:field="*{rawEquation}">
+    <p th:if="${#fields.hasErrors('rawEquation')}" style="color: red" class="text-danger" th:errors="*{rawEquation}"></p>
+
+    <input type="submit" value="Solve">
+</form>
+
+<h3>
+    <label for="result">Result</label>
+    <p th:if="${result != null}" th:text="${result}" id="result" class="result"></p>
+</h3>
+
+<script src="/js/scripts.js"></script>
+</body>
+</html>
