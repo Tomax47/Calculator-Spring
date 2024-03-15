@@ -44,6 +44,7 @@ public class CalculatorController {
 
         String result = "";
 
+        System.out.println("Raw : " + equationDto.getRawEquation());
         result = calculatorService.performCalculation(
                 equationDto.getRawEquation(),
                 equationDto.getUserId());

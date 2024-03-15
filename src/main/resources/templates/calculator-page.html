@@ -7,23 +7,58 @@
 </head>
 <body>
 
-<form role="form" method="post" th:action="@{/calculate}" th:object="${equationForm}">
-    <input type="hidden" name="userId" th:value="${userId}">
-    <label for="equation">Equation</label>
-    <input type="text"
-           name="rawEquation"
-           placeholder="Write the equation here"
-           id="equation"
-           th:field="*{rawEquation}">
-    <p th:if="${#fields.hasErrors('rawEquation')}" style="color: red" class="text-danger" th:errors="*{rawEquation}"></p>
+<center>
+    <h3>
+        <label for="result">Result</label>
+        <p th:if="${result != null}" th:text="${result}" id="result" class="result"></p>
+    </h3>
 
-    <input type="submit" value="Solve">
-</form>
+    <form role="form" th:action="@{/calculate}" method="post" th:object="${equationForm}">
+        <input type="hidden" name="userId" th:value="${userId}">
+        <div class="calculator card">
 
-<h3>
-    <label for="result">Result</label>
-    <p th:if="${result != null}" th:text="${result}" id="result" class="result"></p>
-</h3>
+            <input
+                    type="text"
+                    id="equation"
+                    class="calculator-screen z-depth-1"
+                    value=""
+                    placeholder="Write the equation here"
+                    th:field="*{rawEquation}"/>
+            <p th:if="${#fields.hasErrors('rawEquation')}" style="color: red" class="text-danger" th:errors="*{rawEquation}"></p>
+
+            <div class="calculator-keys">
+
+                <button type="button" class="operator btn btn-info color-operation" value="+">+</button>
+                <button type="button" class="operator btn btn-info color-operation" value="-">-</button>
+                <button type="button" class="operator btn btn-info color-operation" value="*">&times;</button>
+
+                <button type="button" value="7" class="btn btn-light waves-effect">7</button>
+                <button type="button" value="8" class="btn btn-light waves-effect">8</button>
+                <button type="button" value="9" class="btn btn-light waves-effect">9</button>
+
+
+                <button type="button" value="4" class="btn btn-light waves-effect">4</button>
+                <button type="button" value="5" class="btn btn-light waves-effect">5</button>
+                <button type="button" value="6" class="btn btn-light waves-effect">6</button>
+
+
+                <button type="button" value="1" class="btn btn-light waves-effect">1</button>
+                <button type="button" value="2" class="btn btn-light waves-effect">2</button>
+                <button type="button" value="3" class="btn btn-light waves-effect">3</button>
+
+
+                <button type="button" value="0" class="btn btn-light waves-effect">0</button>
+                <button type="button" class="operator btn btn-info color-operation" value="sqrt">&radic;</button>
+                <input type="submit" id="submit-btn" class="equal-sign operator btn btn-default color-equal" value="=">
+
+                <button type="button" class="operator btn btn-info color-operation" value="^">^</button>
+                <button type="button" class="operator btn btn-info color-operation" value="/">&divide;</button>
+                <button type="button" class="all-clear function btn btn-danger btn-sm color-ac" value="erase">AC</button>
+
+            </div>
+        </div>
+    </form>
+</center>
 
 <script src="/js/scripts.js"></script>
 </body>

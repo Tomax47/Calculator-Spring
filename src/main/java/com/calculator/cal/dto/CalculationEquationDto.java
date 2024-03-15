@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Builder
 public class CalculationEquationDto {
 
-    @Size(min = 5, max = 10, message = "The equation must be 5-10 characters long!")
+    @Size(min = 3, max = 18, message = "The equation must be 3-18 characters long! <White spaces included>")
     private String rawEquation;
     @NotNull
     private Long userId;

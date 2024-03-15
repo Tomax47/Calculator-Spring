@@ -37,7 +37,7 @@ public class Config extends WebSecurityConfigurerAdapter {
 //                .loginProcessingUrl("/login")
                 .usernameParameter("email")
                 //Temporary for testing
-                .defaultSuccessUrl("/calculator")
+                .defaultSuccessUrl("/calculate")
                 .failureUrl("/login?error")
                 .permitAll();
     }
